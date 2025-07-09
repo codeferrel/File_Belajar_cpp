@@ -1,0 +1,63 @@
+#include<iostream>
+#include <fstream>
+using namespace std ;
+
+struct buku{
+	string judul;
+	string penulis ;
+    int tahun ;
+     int stok ;
+};
+
+int main (){
+	int jumlah ;
+	cout<<"Masukkan jumlah buku :";
+	cin>>jumlah;
+	cin.ignore();
+	
+	cout<<endl;
+	
+	buku daftarbuku[jumlah];
+	
+	for (int i=0 ;i<jumlah ;i++){
+		cout<<"Data buku ke-"<<i+1<<endl;
+		cout<<"Masukkan Judul buku :";
+		cin>>daftarbuku[i].judul;
+		
+		cout<<"Masukkan penulis Buku :";
+		cin>>daftarbuku[i].penulis;
+		
+		cout<<"Tahun terbit :";
+		cin>>daftarbuku[i].tahun;
+		
+		
+		cout<<"Masukkan stok buku :";
+		cin>>daftarbuku[i].stok;
+		
+		
+	}
+	ofstream file ("tokobuku.txt");
+	if(file.is_open()){
+		file <<"DAFTAR TOKO BUKU SEDERHANA \n";
+		file <<"------------------------------\n";
+		for(int i=0 ;i<jumlah ;i++){
+			file<<"buku ke -"<<i+1 <<endl;
+			file<<"judul buku "<<daftarbuku[i].judul<<endl;
+			file<<"Penulis "<<daftarbuku[i].penulis<<endl;
+			file<<"Tahun "<<daftarbuku[i].tahun<<endl;
+			file<<"Stok "<<daftarbuku[i].stok<<endl;
+			
+			file<<"----------------------------\n";
+			
+		
+		} 
+			file.close();
+			
+			cout<<"Data buku telah disimpan ke file txt ";
+	}
+	else {
+	cout<<"File tidak ditemukan !";	
+	}
+	
+	
+}
